@@ -21,11 +21,11 @@ def aggregate(path, headers):
             zero_obs_l2 = 0
             zero_obs_l3 = 0
 
-            for date_folder in listdir_nohidden(path + '/' + feeder_folder):
-                for csv_file in listdir_nohidden(path + '/' + feeder_folder + '/' + date_folder):
+            for date_folder in listdir_nohidden(os.path.join(path, feeder_folder)):
+                for csv_file in listdir_nohidden(os.path.join(path, feeder_folder, date_folder)):
                     total_obs += 1
 
-                    with open(path + '/' + feeder_folder + '/' + date_folder + '/' + csv_file) as file:
+                    with open(os.path.join(path, feeder_folder, date_folder, csv_file)) as file:
 
                         # only read second row of each file
                         row = list(csv.reader(file, delimiter=','))[1]
